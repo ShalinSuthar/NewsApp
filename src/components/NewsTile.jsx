@@ -3,6 +3,7 @@ import { useSwipeable } from 'react-swipeable';
 import '../styles/NewsTile.css'; // Import custom styles for NewsTile
 
 const NewsTile = ({ article }) => {
+  const isMobile = window.innerWidth <= 768;
   const handleSwipeRight = () => {
     // Open the article in a new tab when swiped right
     console.log("handled swipe right")
@@ -10,6 +11,7 @@ const NewsTile = ({ article }) => {
   };
   const swipeHandlers = useSwipeable({
     onSwipedRight: handleSwipeRight,
+    onSwipedLeft: handleSwipeRight
   });
 
   const openArticleInNewTab = (url) => {
@@ -29,7 +31,7 @@ const NewsTile = ({ article }) => {
         <h3 className="news-headline">{article.title}</h3>
         <p className="news-description">{article.description}</p>
         <a href={article.url} target="_blank" rel="noopener noreferrer" className="read-more">
-          Read More
+        {isMobile ? 'Swipe to Read More >>>' : 'Read More'}
         </a>
       </div>
         </div>
