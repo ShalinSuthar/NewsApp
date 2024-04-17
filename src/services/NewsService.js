@@ -9,7 +9,7 @@ class NewsService {
   }
 
   async getNews(category, query = '') {
-    let useDummyResponse = false;
+    let useDummyResponse = true;
 
     if (useDummyResponse) {
       return dummyArticles; // Return the dummy response
